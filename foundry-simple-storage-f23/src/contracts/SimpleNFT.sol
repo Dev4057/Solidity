@@ -14,7 +14,7 @@ contract SimpleNFT{
         uint tokenId= nextTokenId++;
         ownerOf[tokenId]=msg.sender;
         balanceOf[msg.sender]+=1;
-        emit Transfer(address(0),msg.sender ,tokenId);
+        emit Transfer(address(0),msg.sender ,tokenId); // Base address ke pass se msg.sender ko send karo and with a particular token Id 
     }
 
     // Below function lets you mint the existin token to some one else accordingly  
