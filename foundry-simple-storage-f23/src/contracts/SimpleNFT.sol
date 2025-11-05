@@ -4,7 +4,6 @@ pragma solidity ^0.8.19;
 contract SimpleNFT{
     string public name = "SimpleNFT";
     string public symbol= "SNFT";
-
     mapping(uint=>address)public ownerOf;
     mapping(address=>uint)public balanceOf;
     uint public nextTokenId;
