@@ -28,7 +28,7 @@ contract SimpleNFT{
         ownerOf[tokenId]==to;// After that the token Id is given to that next person and then the balance is managed accordingly 
         balanceOf[from]+=1;
         balanceOf[to]-=1;
-        emit Transfer(from, to, tokenId);
+        emit Transfer(from, to, tokenId);  // Logging ke liye
     }
 }
     
