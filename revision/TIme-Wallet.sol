@@ -35,7 +35,13 @@ contract Time_Wallet{
     }
 
 
+    function getBalances()external view returns(uint){
+        return  address(this).balance;
 
+    }
 
-
+    function timeLeft() external view returns(uint){
+        if(block.timestamp>=unlockTime)return 0;
+        return unlockTime-block.timestamp;
+    }
 }
