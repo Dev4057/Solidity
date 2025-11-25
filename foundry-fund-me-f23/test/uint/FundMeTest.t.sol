@@ -1,8 +1,8 @@
 //SPDX-License-Identifier:MIT
 pragma solidity ^0.8.19 ;
 import {Test,console} from "forge-std/Test.sol";
-import{FundMe} from "../src/FundMe.sol";
-import {DeployFundMe} from "../script/DeployFundMe.s.sol";
+import{FundMe} from "../../src/FundMe.sol";
+import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
 
 
 contract FundMeTest is Test{
@@ -129,5 +129,35 @@ function testWithdrawFromASingleFunder() public funded {
     );
 }
 
+
+function testPrintStorageData() public {
+    for (uint256 i = 0; i < 3; i++) {
+        bytes32 value = vm.load(address(fundMe), bytes32(i));
+        console.log("Value at location", i, ":");
+        console.logBytes32(value);
+    }
+    console.log("PriceFeed address:", address(fundMe.getPriceFeed()));
+}
+function testWithdrawFromMultipleFundersCheaper() public funded {
+    uint160 numberOfFunders = 10;
+    uint160 startingFunderIndex = 1;
+    for (uint160 i = startingFunderIndex; i < numberOfFunders + startingFunderIndex; i++) {
+        // we get hoax from stdcheats
+        // prank + deal
+        hoax(address(i), SEND_VALUE);
+        fundMe.fund{value: SEND_VALUE}();
+    }
+
+    uint256 startingFundMeBalance = address(fundMe).balance;
+    uint256 startingOwnerBalance = fundMe.getOwner().balance;
+
+    vm.startPrank(fundMe.getOwner());
+    fundMe.cheaperWithdraw();
+    vm.stopPrank();
+
+    assert(address(fundMe).balance == 0);
+    assert(startingFundMeBalance + startingOwnerBalance == fundMe.getOwner().balance);
+    assert((numberOfFunders + 1) * SEND_VALUE == fundMe.getOwner().balance - startingOwnerBalance);
+}
 
 }

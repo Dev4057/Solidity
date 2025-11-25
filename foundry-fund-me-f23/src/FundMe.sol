@@ -34,6 +34,9 @@ contract FundMe {
         s_funders.push(msg.sender);
     }
 
+function getPriceFeed() public view returns (AggregatorV3Interface) {
+    return s_priceFeed;
+}
     function getVersion() public view returns (uint256){
     AggregatorV3Interface priceFeed = AggregatorV3Interface(s_priceFeed);
     return priceFeed.version();
@@ -90,6 +93,18 @@ function getFunder(uint256 index) public view returns (address) {
 }
 function getOwner() public view returns (address) {
     return i_owner;
+}
+
+function cheaperWithdraw() public onlyOwner {
+    uint256 fundersLength = s_funders.length;
+    for(uint256 funderIndex = 0; funderIndex < fundersLength; funderIndex++) {
+        address funder = s_funders[funderIndex];
+        s_addressToAmountFunded[funder] = 0;
+    }
+    s_funders = new address[](0);
+
+    (bool callSuccess,) = payable(msg.sender).call{value: address(this).balance}("");
+    require(callSuccess, "Call failed");
 }
 }
 
