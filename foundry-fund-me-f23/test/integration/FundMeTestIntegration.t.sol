@@ -19,7 +19,7 @@ contract InteractionsTest is Test {
     function setUp() external {
         deployFundMe = new DeployFundMe();
         fundMe = deployFundMe.run();
-        vm.deal(alice, STARTING_USER_BALANCE);
+        vm.deal(alice, STARTING_USER_BALANCE);// deal is used to assign some amount of ether for the testing purpopse so that alice can send intead of the real user actually 
     }
 
     function testUserCanFundAndOwnerWithdraw() public {

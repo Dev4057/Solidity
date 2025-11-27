@@ -48,6 +48,10 @@ Logs:
   Cause Technically we are not the ones that deployed the FundMe contract. The FundMe contract was deployed by the setUp function, which is part of the FundMeTest contract. So, even though we are the ones who called setUp via forge test, the actual testing contract is the deployer of the FundMe contract. */
 //   assertEq(fundMe.i_owner(),address(this));
 //     }
+
+
+
+
 function testOwnerIsMsgSender() public {
     assertEq(fundMe.getOwner(), msg.sender);
 }
@@ -62,6 +66,8 @@ function testOwnerIsMsgSender() public {
         }
   }       
 
+
+
         /*Create a .env file. (Also make sure that your .gitignore file contains the .env entry)
 
 In the .env file create a new entry as follows:
@@ -73,11 +79,17 @@ Run forge test --mt testPriceFeedVersionIsAccurate --fork-url $SEPOLIA_RPC_URL *
 
 
 // this is the cheat code which foundry talk about to revert 
+
+
+
+
 function testFundFailsWIthoutEnoughETH() public {
     vm.expectRevert(); // <- The next line after this one should revert! If not test fails.
     fundMe.fund();     // <- We send 0 value
 }
     
+
+
 function testFundUpdatesFundDataStructure() public {
     vm.prank(alice);
     fundMe.fund{value: SEND_VALUE}();
