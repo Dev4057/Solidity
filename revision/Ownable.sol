@@ -3,7 +3,7 @@ pragma solidity ^0.8.19;
 
 contract Ownable{
     address private _owner;
-
+    
     event ownerShipTransferred(address indexed from , address indexed to);
 
     modifier onlyOwner(){

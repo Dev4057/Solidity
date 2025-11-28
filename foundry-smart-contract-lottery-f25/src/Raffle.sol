@@ -32,17 +32,22 @@ pragma solidity ^0.8.19;
 
 contract Raffle {
     /*Errors */
-
     error Raffle__SendMoreToEnterRaffle();
 
     uint256 private immutable i_entranceFee;
+    //@dev The duration of the lottery in seconds 
+    uit256 private immutable i_interval; 
     address payable[] private s_players; // The players will get added to the array and their addresses will be payable 
+    uint256 private s_lastTimeStamp;
 
+    
     /**Events */
     event RaffleEntered(address indexed player)
 
     constructor(uint256 entranceFee){
         i_entranceFee=entranceFee;
+        i_interval=interval;
+        s_lastTimeStamp=block.timestamp;
     }
 
     function enterRaffle()public payable{
@@ -59,13 +64,26 @@ contract Raffle {
         emit RaffleEntered(msg.sender);
 
 
-        function pickWinner()public{
 
+/**
+ * 1. Get a random number
+ * 2. Use random number to pick a player
+ * 3. Be automatically called
+ */
+
+        function pickWinner() external {
+           if ((block.timeStamp-s_lastTimeStamp)<i_interval){
+                revert();
+            }
+
+            //Get our Random number
+
+            
     }
 
+
+
     /**Getter Funtions */
-
-
     function getEntranceFee()external view returns(uint256){
         return i_entranceFee;
     }
