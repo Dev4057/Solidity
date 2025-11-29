@@ -29,8 +29,7 @@ pragma solidity ^0.8.19;
      * @dev used chainlink VRFv2.5
      */
     
-    import {VRFConsumerBaseV2Plus} from "@chainlink/contracts@1.5.0/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
-
+import {VRFConsumerBaseV2Plus} from "@chainlink/contracts/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
 contract Raffle {
     /*Errors */
     error Raffle__SendMoreToEnterRaffle();

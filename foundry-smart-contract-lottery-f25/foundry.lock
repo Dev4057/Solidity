@@ -1,4 +1,13 @@
 {
+  "../foundry-fund-me-f23/lib/foundry-devops": {
+    "rev": "efff097a87e70c3d15661c9f2a2daeae0b33d5d5"
+  },
+  "lib/chainlink-brownie-contracts": {
+    "tag": {
+      "name": "1.1.1",
+      "rev": "12393bd475bd60c222ff12e75c0f68effe1bbaaf"
+    }
+  },
   "lib/forge-std": {
     "tag": {
       "name": "v1.12.0",
