@@ -29,6 +29,7 @@ pragma solidity ^0.8.19;
      * @dev used chainlink VRFv2.5
      */
     
+    import {VRFConsumerBaseV2Plus} from "@chainlink/contracts@1.5.0/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
 
 contract Raffle {
     /*Errors */
@@ -76,7 +77,16 @@ contract Raffle {
                 revert();
             }
 
+            /**
+             * As We niw that getting a random number on blockchain in difficult so its hard to make it possible so for that we are using the chainlink VRF 
+             * What is the Request and Receive cycle?
+            The Data Feeds Getting Started guide explains how to consume Chainlink Data Feeds, which consist of reference data posted onchain by oracles. This data is stored in a contract and can be referenced by consumers until the oracle updates the data again.
+
+            Randomness, on the other hand, cannot be reference data. If the result of randomness is stored onchain, any actor could retrieve the value and predict the outcome. Instead, randomness must be requested from an oracle, which generates a number and a cryptographic proof. Then, the oracle returns that result to the contract that requested it. This sequence is known as the Request and Receive cycle.
+             */
+
             //Get our Random number
+            
 
             
     }
