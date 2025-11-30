@@ -95,3 +95,5 @@ contract SimpleStorage{
         return storedNumber;
     }
 }
+
+// Read the complete contract in the proper format 
