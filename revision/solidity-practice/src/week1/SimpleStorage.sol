@@ -29,7 +29,7 @@ contract SimpleStorage{
     //Errors
 
     //Custom Errors are more gas efficient than require strings 
-    ///@notice Throws when non Ownr tries to call the owner-only function 
+    ///@notice Throws when non Owner tries to call the owner-only function 
     error NotOwner();
     ///@notice Thrown when trying to transfer ownership to zero address
     error InvalidAddress();
