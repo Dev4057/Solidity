@@ -20,6 +20,12 @@
 // private
 // view & pure functions
 
+// DIfference between external ,public ,internal and private functions:
+// 1. External functions can only be called from outside the contract.
+// 2. while public functions can be called from both inside and outside the contract. 
+// 3. Internal functions can only be called from within the contract or from derived contracts.
+// 4. private functions can only be called from within the contract.
+
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.19;
