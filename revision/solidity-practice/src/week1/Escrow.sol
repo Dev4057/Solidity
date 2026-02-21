@@ -1,6 +1,5 @@
-//SPDX-License-Identifier:MIT;
-
-pragma solidity version ^0.8.19;
+//SPDX-License-Identifier:MIT
+pragma solidity ^0.8.19;
 
     /**
  * @title Escrow
@@ -62,19 +61,12 @@ contract  Escrow{
     
 
 
-    // Adding the variables 
-
-
-
-
-    
-
-      
+    // Adding the variables
     // ENUMS
     // =====
     // Enums are custom types with a fixed set of values
     // They're perfect for tracking state (like a status)
-    
+
     /// @notice Possible states of an escrow
     /// @dev Each escrow can only be in one state at a time
 }

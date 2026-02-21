@@ -25,7 +25,7 @@ contract counter{
     }
 
 
-    function decrementCounter(){
+    function decrementCounter() public{
         require(count>0,"Count should be greater than 0");
         count-=1;
         emit counterDecreased(count,msg.sender);
